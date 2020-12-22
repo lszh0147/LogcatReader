@@ -14,7 +14,7 @@
         android:name=".LogcatApp"
         android:allowBackup="true"
         android:fullBackupContent="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:supportsRtl="true"
@@ -85,8 +85,8 @@
 
         <service
             android:name=".services.LogcatService"
-            android:exported="false"
-            android:stopWithTask="false" />
+            android:exported="true"
+            android:stopWithTask="true" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

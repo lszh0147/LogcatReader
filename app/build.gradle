@@ -18,21 +18,28 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
-
     signingConfigs {
         release {
-            try {
-                def keystoreProperties = new Properties()
-                keystoreProperties.load(new FileInputStream(rootProject.file("keystore.properties")))
-                keyAlias keystoreProperties['keyAlias']
-                keyPassword keystoreProperties['keyPassword']
-                storeFile file(keystoreProperties['storeFile'])
-                storePassword keystoreProperties['storePassword']
-            } catch (FileNotFoundException ignored) {
-                println("keystore file not found.")
-            }
+            storeFile file("TestKey.jks")
+            storePassword "123321"
+            keyAlias "Test"
+            keyPassword "123321"
         }
     }
+//    signingConfigs {
+//        release {
+//            try {
+//                def keystoreProperties = new Properties()
+//                keystoreProperties.load(new FileInputStream(rootProject.file("keystore.properties")))
+//                keyAlias keystoreProperties['keyAlias']
+//                keyPassword keystoreProperties['keyPassword']
+//                storeFile file(keystoreProperties['storeFile'])
+//                storePassword keystoreProperties['storePassword']
+//            } catch (FileNotFoundException ignored) {
+//                println("keystore file not found.")
+//            }
+//        }
+//    }
 
     dexOptions {
         javaMaxHeapSize "2g"
@@ -59,8 +66,9 @@ android {
         }
         release {
             signingConfig signingConfigs.release
-            minifyEnabled false
-            shrinkResources false
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true  //zipalign是Android SDK中的工具，它能够对打包的应用程序进行优化。
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

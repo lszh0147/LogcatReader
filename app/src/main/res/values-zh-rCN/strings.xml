@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Logcat Reader</string>
+    <string name="app_name">Logcat</string>
     <string name="device_logs">设备 Logs</string>
     <string name="saved_logs">保存 logs</string>
     <string name="saved_logs_action">保存 logs</string>

@@ -13,6 +13,7 @@ import com.dp.logcatapp.util.PreferenceKeys
 import com.dp.logcatapp.util.getDefaultSharedPreferences
 import com.dp.logcatapp.util.setKeepScreenOn
 import com.dp.logcatapp.util.showToast
+import java.lang.Exception
 
 class MainActivity : BaseActivityWithToolbar() {
     private var canExit = false
@@ -84,7 +85,12 @@ class MainActivity : BaseActivityWithToolbar() {
     override fun onDestroy() {
         super.onDestroy()
         if (canExit) {
-            stopService(Intent(this, LogcatService::class.java))
+            try{
+                stopService(Intent(this, LogcatService::class.java))
+            }catch (e:Exception){
+                e.stackTrace
+            }
+
         }
     }
 
